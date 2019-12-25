@@ -68,8 +68,15 @@
 		</offsets>
 	</model-->
 
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<object-name>WindowGlassCpt</object-name>
+		<object-name>WindowGlassFo</object-name>
+	</effect>
+	
 	<model>
 		<path>Aircraft/A320-family/Models/Instruments/OHpanel/OHpanel.xml</path>
+		<usage>interior</usage>
 		<offsets>
 			<x-m>0.128</x-m>
 			<y-m>0</y-m>
@@ -80,6 +87,7 @@
 
 	<model>
 		<path>Aircraft/A320-family/Models/Instruments/OHpanel/OHpanelEPR.xml</path>
+		<usage>interior</usage>
 		<condition>
 			<equals>
 				<property>options/eng</property>
@@ -96,6 +104,7 @@
 
 	<model>
 		<path>Aircraft/A320-family/Models/Instruments/OHpanel/SteepAppr.xml</path>
+		<usage>interior</usage>
 		<condition>
 			<and>
 				<equals>
@@ -119,6 +128,7 @@
 	<!-- DDRMI Instrument -->
 	<model>
 		<path>Aircraft/A320-family/Models/Instruments/DDRMI/DDRMI.xml</path>
+		<usage>interior</usage>
 		<offsets>
 			<x-m>-0.516286</x-m>
 			<y-m>-0.142488</y-m>
@@ -131,6 +141,7 @@
 	<!-- Brakes Pressure Indicator -->
 	<model>
 		<path>Aircraft/A320-family/Models/Instruments/Brakes/Brakes.xml</path>
+		<usage>interior</usage>
 		<offsets>
 			<x-m>-0.5131</x-m>
 			<y-m>0.21535</y-m>
@@ -142,6 +153,7 @@
 	<!-- Multi-purpose Control and Display Units -->
 	<model>
 		<path>Aircraft/A320-family/Models/Instruments/MCDU/MCDU1.xml</path>
+		<usage>interior</usage>
 		<offsets>
 			<x-m>0.022</x-m>
 			<y-m>0.0</y-m>
@@ -152,6 +164,7 @@
 
 	<model>
 		<path>Aircraft/A320-family/Models/Instruments/MCDU/MCDU2.xml</path>
+		<usage>interior</usage>
 		<offsets>
 			<x-m>0.022</x-m>
 			<y-m>0.3651</y-m>
@@ -163,6 +176,7 @@
 	<!-- Radio -->
 	<model>
 		<path>Aircraft/A320-family/Models/Instruments/Radio/Radio1.xml</path>
+		<usage>interior</usage>
 		<offsets>
 			<x-m>0.022</x-m>
 			<y-m>0.0</y-m>
@@ -172,6 +186,7 @@
 	</model>
 	<model>
 		<path>Aircraft/A320-family/Models/Instruments/Radio/Radio2.xml</path>
+		<usage>interior</usage>
 		<offsets>
 			<x-m>0.022</x-m>
 			<y-m>0.3651</y-m>
@@ -183,6 +198,7 @@
 	<!-- Audio -->
 	<model>
 		<path>Aircraft/A320-family/Models/Instruments/Audio/Audio1.xml</path>
+		<usage>interior</usage>
 		<offsets>
 			<x-m>0.022</x-m>
 			<y-m>0.0</y-m>
@@ -192,6 +208,7 @@
 	</model>
 	<model>
 		<path>Aircraft/A320-family/Models/Instruments/Audio/Audio2.xml</path>
+		<usage>interior</usage>
 		<offsets>
 			<x-m>0.022</x-m>
 			<y-m>0.3651</y-m>
@@ -203,6 +220,7 @@
 	<!-- Upper Pedestal Panels -->
 	<model>
 		<path>Aircraft/A320-family/Models/Instruments/Pedestal_up/Pedestal_up.xml</path>
+		<usage>interior</usage>
 		<offsets>
 			<x-m>0.022</x-m>
 			<y-m>0.0</y-m>
@@ -336,6 +354,18 @@
 		<path>Aircraft/A320-family/Models/Instruments/IESI/IESI.xml</path>
 	</model>
 
+	<!-- no shadow on screens -->
+	<animation>
+		<type>noshadow</type>
+		<object-name>PFD1</object-name>
+		<object-name>PFD2</object-name>
+		<object-name>ND1</object-name>
+		<object-name>ND2</object-name>
+		<object-name>LECAM</object-name>
+		<object-name>UECAM</object-name>
+		<object-name>IESI</object-name>
+	</animation>
+	
 	<!-- No button lights without power! -->
 	<animation>
 		<type>select</type>
@@ -443,6 +473,109 @@
 				<value>25</value>
 			</greater-than-equals>
 		</condition>
+	</animation>
+	
+	<!-- no shadow on lights -->
+	<animation>
+		<type>noshadow</type>
+		<object-name>abs_low_on</object-name>
+		<object-name>abs_med_on</object-name>
+		<object-name>abs_max_on</object-name>
+		<object-name>alt-text</object-name>
+		<object-name>alt-text-test</object-name>
+		<object-name>ap1_led</object-name>
+		<object-name>ap2_led</object-name>
+		<object-name>appr_led</object-name>
+		<object-name>arpt_led</object-name>
+		<object-name>arpt_led.001</object-name>
+		<object-name>a-thr_led</object-name>
+		<object-name>atc-code</object-name>
+		<object-name>atc-test</object-name>
+		<object-name>audio_att_led</object-name>
+		<object-name>audio_att_sgn</object-name>
+		<object-name>audio_call_hf2_led</object-name>
+		<object-name>audio_call_hf1_led</object-name>
+		<object-name>audio_call_vhf1_led</object-name>
+		<object-name>audio_call_vhf2_led</object-name>
+		<object-name>audio_call_vhf3_led</object-name>
+		<object-name>audio_hf1_led</object-name>
+		<object-name>audio_hf2_led</object-name>
+		<object-name>audio_mech_led</object-name>
+		<object-name>audio_mech_sgn</object-name>
+		<object-name>audio_voice_led</object-name>
+		<object-name>audio_vhf1_led</object-name>
+		<object-name>audio_vhf2_led</object-name>
+		<object-name>audio_vhf3_led</object-name>
+		<object-name>autoland_light_on</object-name>
+		<object-name>cstr_led</object-name>
+		<object-name>cstr_led.001</object-name>
+		<object-name>dec_low_on</object-name>
+		<object-name>dec_med_on</object-name>
+		<object-name>dec_max_on</object-name>
+		<object-name>ecam_apu_led</object-name>
+		<object-name>ecam_bleed_led</object-name>
+		<object-name>ecam_cond_led</object-name>
+		<object-name>ecam_clr_l_led</object-name>
+		<object-name>ecam_clr_r_led</object-name>
+		<object-name>ecam_c_b_led</object-name>
+		<object-name>ecam_door_led</object-name>
+		<object-name>ecam_elec_led</object-name>
+		<object-name>ecam_el_dc_led</object-name>
+		<object-name>ecam_eng_led</object-name>
+		<object-name>ecam_fctl_led</object-name>
+		<object-name>ecam_fuel_led</object-name>
+		<object-name>ecam_hyd_led</object-name>
+		<object-name>ecam_press_led</object-name>
+		<object-name>ecam_sts_led</object-name>
+		<object-name>ecam_wheel_led</object-name>
+		<object-name>exped_led</object-name>
+		<object-name>fcu_screen</object-name>
+		<object-name>fd1_led</object-name>
+		<object-name>fd2_led</object-name>
+		<object-name>fpa-text</object-name>
+		<object-name>hdg-text</object-name>
+		<object-name>hdg-text-test</object-name>
+		<object-name>ils_led</object-name>
+		<object-name>ils2_led</object-name>
+		<object-name>lgear_down</object-name>
+		<object-name>lgear_unlk</object-name>
+		<object-name>loc_led</object-name>
+		<object-name>mach-text</object-name>
+		<object-name>master_caution_on</object-name>
+		<object-name>master_warning_on</object-name>
+		<object-name>ndb_led</object-name>
+		<object-name>ndb_led.001</object-name>
+		<object-name>ngear_down</object-name>
+		<object-name>ngear_unlk</object-name>
+		<object-name>qnh-hpa</object-name>
+		<object-name>qnh-inhg</object-name>
+		<object-name>qnh-std</object-name>
+		<object-name>qnh-test</object-name>
+		<object-name>radio_adf_led</object-name>
+		<object-name>radio_am_led</object-name>
+		<object-name>radio_bfo_led</object-name>
+		<object-name>radio_hf1_led</object-name>
+		<object-name>radio_hf2_led</object-name>
+		<object-name>radio_ls_led</object-name>
+		<object-name>radio_nav_led</object-name>
+		<object-name>radio_opt_led</object-name>
+		<object-name>radio_sel_led</object-name>
+		<object-name>radio_vhf1_led</object-name>
+		<object-name>radio_vhf2_led</object-name>
+		<object-name>radio_vhf3_led</object-name>
+		<object-name>radio_vor_led</object-name>
+		<object-name>rgear_down</object-name>
+		<object-name>rgear_unlk</object-name>
+		<object-name>rudder-trim</object-name>
+		<object-name>spd-text</object-name>
+		<object-name>spd-text-test</object-name>
+		<object-name>terr_on_nd_on</object-name>
+		<object-name>vord_led</object-name>
+		<object-name>vord_led.001</object-name>
+		<object-name>vs-text</object-name>
+		<object-name>vs-text-test</object-name>
+		<object-name>wpt_led</object-name>
+		<object-name>wpt_led.001</object-name>
 	</animation>
 
 	<animation>
@@ -6189,6 +6322,46 @@
 			<blue>0.08</blue>
 		</emission>
 	</animation>
+	
+	<animation>
+		<type>noshadow</type>
+		<object-name>spd-text</object-name>
+		<object-name>mach-text</object-name>
+		<object-name>hdg-text</object-name>
+		<object-name>alt-text</object-name>
+		<object-name>vs-text</object-name>
+		<object-name>atc-code</object-name>
+		<object-name>atc-test</object-name>
+		<object-name>fpa-text</object-name>
+		<object-name>qnh-inhg</object-name>
+		<object-name>qnh-hpa</object-name>
+		<object-name>qnh-std</object-name>
+		<object-name>rudder-trim</object-name>
+		<object-name>alt-text-test</object-name>
+		<object-name>atc-test</object-name>
+		<object-name>audio_att_sgn</object-name>
+		<object-name>audio_call_hf2_led</object-name>
+		<object-name>audio_call_hf1_led</object-name>
+		<object-name>audio_call_vhf1_led</object-name>
+		<object-name>audio_call_vhf2_led</object-name>
+		<object-name>audio_call_vhf3_led</object-name>
+		<object-name>audio_mech_sgn</object-name>
+		<object-name>autoland_light_on</object-name>
+		<object-name>ecam_c_b_led</object-name>
+		<object-name>ecam_el_dc_led</object-name>
+		<object-name>ecam_sts_led</object-name>
+		<object-name>engine_fault_1</object-name>
+		<object-name>engine_fault_2</object-name>
+		<object-name>exped_led</object-name>
+		<object-name>hdg-text-test</object-name>
+		<object-name>qnh-test</object-name>
+		<object-name>radio_opt_led</object-name>
+		<object-name>rudder-trim-test</object-name>
+		<object-name>spd-text-test</object-name>
+		<object-name>terr_on_nd_on</object-name>
+		<object-name>ver.fmgc</object-name>
+		<object-name>vs-text-test</object-name>
+	</animation>
 
 	<animation>
 		<name>Panel lighting</name>
@@ -6612,11 +6785,9 @@
 		<object-name>wall_2</object-name>
 		<object-name>window_frame</object-name>
 		<object-name>HeadsetCpt</object-name>
-		<object-name>WindowGlassCpt</object-name>
 		<object-name>WindowOpenerCpt</object-name>
 		<object-name>WindowFo</object-name>
 		<object-name>HeadsetFo</object-name>
-		<object-name>WindowGlassFo</object-name>
 		<object-name>WindowOpenerFo</object-name>
 		<object-name>WX</object-name>
 	</effect>

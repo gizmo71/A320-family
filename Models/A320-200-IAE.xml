@@ -19,6 +19,7 @@
 	<!-- Separate Flightdeck to fit the modified nose -->
 	<model>
 		<name>Flightdeck</name>
+		<usage>interior</usage>
 		<path>Aircraft/A320-family/Models/FlightDeck/a320.flightdeck.xml</path>
 		<offsets>
 			<x-m>4.81794</x-m>
@@ -31,6 +32,11 @@
 		<name>Interior</name>
 		<path>Aircraft/A320-family/Models/Interior/a320.interior.xml</path>
 	</model>
+	
+	<animation>
+		<type>noshadow</type>
+		<object-name>Interior</object-name>
+	</animation>
 
 	<model>
 		<name>Nose Gear</name>
@@ -519,6 +525,7 @@
 			</not>
 		</condition>
 	</animation>
+	
 	<animation>
 		<type>select</type>
 		<object-name>Top beacon light ALS</object-name>
@@ -536,6 +543,7 @@
 				<property>sim/rendering/shaders/skydome</property>
 		</condition>
 	</animation>
+	
 	<animation>
 		<type>select</type>
 		<object-name>Nosegear landing light ALS</object-name>
@@ -551,5 +559,36 @@
 				</greater-than>
 			</and>
 		</condition>
+	</animation>
+	
+	<animation>
+		<type>noshadow</type>
+		<object-name>Top beacon light</object-name>
+		<object-name>Bottom beacon light</object-name>
+		<object-name>Left nav light</object-name>
+		<object-name>Right nav light</object-name>
+		<object-name>Left strobe light</object-name>
+		<object-name>Right strobe light</object-name>
+		<object-name>Tail strobe light</object-name>
+		<object-name>Tail nav light</object-name>
+		<object-name>Top beacon light ALS</object-name>
+		<object-name>Bottom beacon light ALS</object-name>
+		<object-name>Left nav light ALS</object-name>
+		<object-name>Right nav light ALS</object-name>
+		<object-name>Left strobe light ALS</object-name>
+		<object-name>Right strobe light ALS</object-name>
+		<object-name>Port landing light ALS</object-name>
+		<object-name>Nosegear landing light ALS</object-name>
+		<object-name>Starboard landing light ALS</object-name>
+		<object-name>Tail strobe light ALS</object-name>
+		<object-name>Tail nav light ALS</object-name>
+		<object-name>tire-smoke-l</object-name>
+		<object-name>tire-smoke-r</object-name>
+		<object-name>rain-splash-s</object-name>
+		<object-name>rain-splash-p</object-name>
+		<object-name>rain-splash-n</object-name>
+		<object-name>tyre-smoke-s</object-name>
+		<object-name>tyre-smoke-p</object-name>
+		<object-name>tyre-smoke-n</object-name>
 	</animation>
 </PropertyList>
