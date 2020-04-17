@@ -10,22 +10,13 @@
 	<ixy unit="SLUG*FT2">       0 </ixy>
 	<ixz unit="SLUG*FT2">       0 </ixz>
 	<iyz unit="SLUG*FT2">       0 </iyz>
-	<emptywt unit="LBS" >   80431 </emptywt>
+	<emptywt unit="LBS" >   95627.7 </emptywt> <!-- REF W&B manual -->
 	
 	<location name="CG" unit="M">
-		<x> 18.849 </x> <!-- 25% MAC -->
+		<x> 18.9966 </x> <!-- empty weight C.G. 28.5% CG -->
 		<y> 0 </y>
 		<z> 0.19249 </z>
 	</location>
-	
-	<pointmass name="Crew">
-		<weight unit="LBS">320</weight>
-		<location name="POINTMASS" unit="M">
-			<x> 5.29845 </x>
-			<y> 0 </y>
-			<z> 0.5 </z>
-		</location>
-	</pointmass>
 	
 	<pointmass name="Forward Cabin">
 		<weight unit="LBS">3722</weight>
