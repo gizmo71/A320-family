@@ -5,7 +5,7 @@
 <ground_reactions>
 	<contact type="BOGEY" name="NOSE_LG">
 		<location unit="M">
-			<x> 7.52385 </x>
+			<x> 7.628 </x>
 			<y> 0 </y>
 			<z> -4.31395 </z>
 		</location>
@@ -61,7 +61,7 @@
 	</contact>
 	<contact type="BOGEY" name="LEFT_MLG">
 		<location unit="M">
-			<x> 20.318 </x>
+			<x> 20.250 </x>
 			<y> -4.25855 </y>
 			<z> -4.51844 </z>
 		</location>
@@ -117,7 +117,7 @@
 	</contact>
 	<contact type="BOGEY" name="RIGHT_MLG">
 		<location unit="M">
-			<x> 20.318 </x>
+			<x> 20.250 </x>
 			<y> 4.25855 </y>
 			<z> -4.51844 </z>
 		</location>
