@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 
-<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+<!-- Copyright (c) 2020 Josh Davidson (Octal450) -->
 <!-- Copyright (c) 2020 Matthew Maring (hayden2000) -->
 
 <PropertyList include="Aircraft/Generic/Human/Include/walker-include.xml">
 	<sim>
 
-		<author>Joshua Davidson (Octal450), Jonathan Redpath (legoboyvdlp), Thorsten Herrmann (TH-555), Based on IDG-A32X</author>
+		<author>Josh Davidson/Octal450 (Flight Dynamics, Systems, Displays), Jonathan Redpath/legoboyvdlp, merspieler, Matthew Maring/hayden2000 (Systems, Displays), Thorsten Herrmann/TH-555, Semir Gebran/CaptB (3D, Textures)</author>
 		
 		<status>Pre V1.0</status>
 		
@@ -1101,6 +1101,9 @@
 		</static>
 		
 		<navigation>
+			<aligned-1 type="bool">0</aligned-1>
+			<aligned-2 type="bool">0</aligned-2>
+			<aligned-3 type="bool">0</aligned-3>
 			<adr>
 				<operating-1 type="bool">0</operating-1>
 				<operating-2 type="bool">0</operating-2>
@@ -3887,6 +3890,7 @@
 			<file>Aircraft/A320-family/Nasal/Systems/tyresmoke.nas</file>
 			<file>Aircraft/A320-family/Nasal/Systems/ground_services.nas</file>
 			<file>Aircraft/A320-family/Nasal/Systems/payload.nas</file>
+			<file>Aircraft/A320-family/Nasal/Instruments/clock.nas</file>
 		</systems>
 		<fadec>
 			<file>Aircraft/A320-family/Nasal/Systems/FADEC/fadec-common.nas</file>
