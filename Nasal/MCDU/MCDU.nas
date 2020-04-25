@@ -310,7 +310,7 @@ var lskbutton = func(btn, i) {
 					canvas_mcdu.myHold[i].del();
 				}
 				canvas_mcdu.myHold[i] = nil;
-				canvas_mcdu.myHold[i] = holdPage.new(i, canvas_mcdu.myLatRev[i].id);
+				canvas_mcdu.myHold[i] = holdPage.new(i, canvas_mcdu.myLatRev[i].wpt);
 				setprop("MCDU[" ~ i ~ "]/page", "HOLD");
 			} else {
 				notAllowed(i);
@@ -448,6 +448,7 @@ var rskbutton = func(btn, i) {
 				}
 				canvas_mcdu.myArrival[i] = nil;
 				canvas_mcdu.myArrival[i] = arrivalPage.new(canvas_mcdu.myLatRev[i].title[2], i);
+				canvas_mcdu.myArrival[i]._setupPageWithData();
 				setprop("MCDU[" ~ i ~ "]/page", "ARRIVAL");
 			} else {
 				notAllowed(i);

@@ -180,12 +180,44 @@ var flightPlanController = {
 		}
 	},
 	
-	insertPPOS: func(n) {
-		me.flightplans[n].insertWP(createWP(geo.aircraft_position(), "PPOS"), 0);
-	},
-	
 	insertTP: func(n) {
 		me.flightplans[n].insertWP(createWP(geo.aircraft_position(), "T-P"), 1);
+	},
+	
+	childWPBearingDistance: func(wpt, bearing, dist, name, typeStr = "") {
+		var coordinates = greatCircleMove(wpt.lat, wpt.lon, bearing, dist);
+		if (typeStr != "") {
+			return createWP(coordinates, name);
+		} else {
+			return createWP(coordinates, name, typeStr);
+		}
+	},
+	
+	insertNOSID: func(n) {
+		var wptStore = me.flightplans[n].getWP(0);
+		if (wptStore.wp_type == "runway") {
+			if (me.flightplans[n].getWP(1).id == "1500") { # check if we have NO SID already loaded
+				me.deleteWP(1, n, 1);
+			}
+			# fudge the altitude since we cannot create a hdgtoAlt from nasal. Assume 600 feet per mile - 2.5 miles 
+			me.flightplans[n].insertWP(me.childWPBearingDistance(wptStore, me.flightplans[n].departure_runway.heading, 2.5, "1500", "sid"), 1);
+		}
+		me.flightPlanChanged(n);
+	},
+	
+	insertNOSTAR: func(n) {
+		var wptStore = me.flightplans[n].getWP(me.arrivalIndex[n]);
+		if (wptStore.wp_type == "runway") {
+			if (me.flightplans[n].getWP(me.arrivalIndex[n] - 1).id == "CF") { # check if we have NO STAR already loaded
+				me.deleteWP(me.arrivalIndex[n] - 1, n, 1);
+			}
+			var hdg = me.flightplans[n].destination_runway.heading + 180;
+			if (hdg > 360) {
+				hdg = hdg - 360;
+			}
+			me.flightplans[n].insertWP(me.childWPBearingDistance(wptStore, hdg, 5, "CF", "star"), me.arrivalIndex[n]);
+		}
+		me.flightPlanChanged(n);
 	},
 	
 	directTo: func(waypointGhost, plan) {
@@ -478,6 +510,7 @@ var flightPlanController = {
 				
 				if (wpt == 1) {
 					if (me.flightplans[n].getWP(wpt).wp_name != "DISCONTINUITY" and me.flightplans[n].getWP(wpt).wp_type != "vectors" and me.flightplans[n].getWP(wpt).wp_type != "hdgToAlt" and wpt <= me.arrivalIndex[n]) {
+						# print("Adding " ~ courseDistanceFrom[1] ~ " miles for waypoint " ~ me.flightplans[n].getWP(wpt).wp_name);
 						me._arrivalDist += courseDistanceFrom[1]; # distance to next waypoint, therafter to end of flightplan
 					}
 				}
@@ -496,7 +529,8 @@ var flightPlanController = {
 					wpDistancePrev[n][wpt].setValue(courseDistanceFromPrev[1]);
 					if (wpt > 1) {
 						if (me.flightplans[n].getWP(wpt - 1).wp_name != "DISCONTINUITY" and me.flightplans[n].getWP(wpt).wp_name != "DISCONTINUITY" and me.flightplans[n].getWP(wpt - 1).wp_type != "vectors" and me.flightplans[n].getWP(wpt - 1).wp_type != "hdgToAlt" and me.flightplans[n].getWP(wpt).wp_type != "vectors" and me.flightplans[n].getWP(wpt).wp_type != "hdgToAlt" and wpt <= me.arrivalIndex[n]) {
-							me._arrivalDist += courseDistanceFromPrev[1]; # todo - buggy. Neglect discontinuity
+							# print("Adding " ~ courseDistanceFromPrev[1] ~ " miles for waypoint " ~ me.flightplans[n].getWP(wpt).wp_name);
+							me._arrivalDist += courseDistanceFromPrev[1]; 
 						}
 					}
 				} else {
@@ -517,6 +551,7 @@ var flightPlanController = {
 				}
 			}
 		}
+		# print("Total: " ~ me._arrivalDist);
 		me.arrivalDist = me._arrivalDist;
 		me.updateMCDUDriver(n);
 	},

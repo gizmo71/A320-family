@@ -523,7 +523,7 @@ var masterFMGC = maketimer(0.2, func {
 });
 
 var reset_FMGC = func {
-	setprop("FMGC/status/phase", "7");
+	setprop("FMGC/status/phase", "0");
 	fd1 = getprop("it-autoflight/input/fd1");
 	fd2 = getprop("it-autoflight/input/fd2");
 	spd = getprop("it-autoflight/input/spd-kts");
@@ -809,8 +809,9 @@ var switchDatabase = func {
 
 # Landing to phase 7
 setlistener("gear/gear[1]/wow", func() {
-	if (timer30secLanding.isRunning) {
+	if (getprop("gear/gear[1]/wow") == 0 and timer30secLanding.isRunning) {
 		timer30secLanding.stop();
+		setprop("FMGC/internal/landing-time", -99);
 	}
 	
 	if (getprop("gear/gear[1]/wow") == 1 and getprop("FMGC/internal/landing-time") == -99) {
@@ -849,7 +850,7 @@ setlistener("systems/navigation/adr/operating-3", func() {
 		timer48gpsAlign3.stop();
 	}
 	
-	if (getprop("gear/gear[1]/wow") == 1 and getprop("FMGC/internal/align3-time") == -99) {
+	if (getprop("FMGC/internal/align3-time") == -99) {
 		timer48gpsAlign3.start();
 		setprop("FMGC/internal/align3-time", pts.Sim.Time.elapsedSec.getValue());
 	}
