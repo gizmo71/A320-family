@@ -505,7 +505,7 @@ var arrivalPage = {
 				canvas_mcdu.pageSwitch[me.computer].setBoolValue(0);
 			} else {
 				setprop("MCDU[" ~ i ~ "]/scratchpad-msg", 1);
-                setprop("MCDU[" ~ i ~ "]/scratchpad", "DIR TO IN PROGRESS");
+				setprop("MCDU[" ~ i ~ "]/scratchpad", "DIR TO IN PROGRESS");
 			}
 		}
 	},
