@@ -720,7 +720,10 @@
 	<channel name="Tiller">
 		
 		<switch name="hydraulics/tiller/switch">
+<!--
 			<default value="/controls/flight/rudder"/>
+-->
+			<default value="/controls/gear/steering"/>
 			<test logic="AND" value="/controls/flight/aileron">
 				fbw/fmgc/enabled eq 0
 				/controls/flight/aileron-drives-tiller eq 1
@@ -764,11 +767,13 @@
 					</eq>
 					<product>
 						<property>hydraulics/tiller/autopush-cmd</property>
-						<value>75</value>
+						<value>75</value> <!-- Actually 95? -->
 					</product>
 					<table>
 						<independentVar lookup="row">/velocities/groundspeed-kt</independentVar>
 						<independentVar lookup="column">hydraulics/tiller/switch</independentVar>
+<!-- TODO: should this allow steering at a standstill? -->
+<!-- This is also oversimplified; the maximums are different between the tiller and rudder inputs. -->
 						<tableData>
 							         -1  0   1
 							  0.500   0  0   0
@@ -787,7 +792,9 @@
 			<test logic="OR" value="75">
 				/sim/model/autopush/connected eq 1
 				/systems/acconfig/autoconfig-running eq 1
+				1 eq 1
 			</test>
+<!-- TODO: above only if split tiller is set? Is the steering really that slow?! -->
 			<test logic="OR" value="12">
 				hydraulics/tiller/hyd-pwr eq 1
 			</test>
